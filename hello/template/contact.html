@@ -1,0 +1,96 @@
+{% extends "base.html" %}
+
+{% block title %}Contact Us{% endblock title %}
+
+{% block body %}
+
+
+<style>
+
+    input[type=text], select {
+
+        padding: 8px ;
+        margin: 8px 0;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        width:250px;
+        height:50px;
+    
+    }
+
+    input[type=text]:hover, select:hover {
+
+        background-color:black;
+        color:white;
+    }
+    
+      
+    input[type=submit] {
+        background-color: black;
+        color: white;
+        padding: 14px 20px;
+        margin: 8px 0;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+    }
+      
+    input[type=submit]:hover {
+        background-color:#A9957B ;
+    }
+
+    input[type=textbox]{
+        width:250px;
+        height:50px;
+        margin:8px 0;
+        border: none;
+        border-radius: 4px;
+    }
+      
+    div {
+        border-radius: 5px;
+        background-color: #f2f2f2;
+        padding: 20px;
+        display:flex;
+        align-items:center;
+        justify-content:center;
+    }
+    option:disabled{
+        color:gray;
+    }
+    option:selected{
+        color:black
+    }
+    h4{
+        text-align:center;
+    }
+
+</style>
+
+<h4 >NEXUS Help Center</h4>
+<div>
+    <form method="post" action="/contact">
+    {% csrf_token %}
+
+        <label for="email">Email id*</label><br>
+        <input type="text" id="email" name="email" placeholder="Enter email id" required><br>
+        <label for="name">Full Name*</label><br>
+        <input type="text" id="name" name="name" placeholder="Enter full name" required><br>
+        <label for="Select option">Select the type of problem*</label><br>
+        <select id="select" name="textbox" required>
+            <option value="" disabled selected style="color:gray" >--Select an option--</option>
+            <option value="Missing/Broken/Wrong Item">Missing/Broken/Wrong Item</option>
+            <option value="Delayed Delievery">Delayed Delievery</option>
+            <option value="Exchange/Return Order">Exchange/Return Order</option>
+            <option value="Delievery Related Complaint">Delievery Related Complaint</option>
+            <option value="Other">Other</option>
+        </select><br>
+        <label for="textbox">If chosen option as Other</label><br>
+        <input type="text" id="textbox" name="other_details" placeholder="Write your concern in detail"><br>
+        <input type="submit" value="Submit">
+    
+    </form>
+</div>
+
+
+{% endblock body %}
